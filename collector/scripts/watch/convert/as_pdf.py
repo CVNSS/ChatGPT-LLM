@@ -25,7 +25,7 @@ def as_pdf(**kwargs):
   del loader
   del pages
 
-  page_content = ''
+  page_content = ''.join([str(page.get_text('text')) for page in fitz.open(fullpath)])
   for page in fitz.open(fullpath):
     print(f"-- Parsing content from pg {page.number} --")
     page_content += str(page.get_text('text'))
